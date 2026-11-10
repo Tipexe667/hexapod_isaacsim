@@ -1,15 +1,15 @@
-# 🤖 Centre de Simulation Robotique 3D : Hiwonder MentorPi & Hexapode 18-DOF
+# 🤖 Centre de Simulation Robotique 3D : MentorPi, ROSPug 12-DOF & Hexapode 18-DOF
 
 Suite de simulation robotique interactive sous **PyBullet** (avec interfaces de commande **Tkinter**, **LiDAR 360°**, **Caméra 3D RGB-D** et fichiers CAO **SolidCraft / URDF / STEP / Isaac Sim**).
 
 <p align="center">
-  <img src="mentorpi_solidcraft/mentorpi_animation.gif" alt="Animation CAO SolidCraft MentorPi" width="48%" />
+  <img src="rospug_solidcraft/rospug_iso.png" alt="Hiwonder ROSPug 12-DOF Quadrupède" width="48%" />
   <img src="mentorpi_solidcraft/mentorpi_t1_iso.png" alt="MentorPi Châssis T1 Chenilles" width="48%" />
 </p>
 
 ---
 
-## ✨ Deux Robots Complets dans un Seul Lanceur
+## ✨ Trois Robots Complets dans un Seul Lanceur
 
 Le menu principal ([`sim_launcher.py`](sim_launcher.py) / [`run_pybullet.bat`](run_pybullet.bat)) permet de lancer et de basculer à tout moment entre :
 
@@ -32,7 +32,17 @@ Le menu principal ([`sim_launcher.py`](sim_launcher.py) / [`run_pybullet.bat`](r
 
 ---
 
-### 2. 🕷️ Robot Hexapode 18-DOF (Dynamixel AX-18)
+### 2. 🐕 Hiwonder ROSPug 12-DOF (Robot Chien Quadrupède • Jetson Nano)
+- **Modèle CAO SolidCraft 62 Corps** (`rospug_solidcraft/rospug.sc`, `.step`, `.urdf`) :
+  - Châssis aluminium anodisé noir et flancs ajourés orange Hiwonder, **NVIDIA Jetson Nano** avec dissipateur à ailettes, écran OLED 0.91", IMU, batterie LiPo 3S et 4 pattes bioniques à bielle parallèle 4-barres.
+- **Locomotion Quadrupède 12-DOF & Postures Bioniques** ([`rospug_sim.py`](rospug_sim.py) / [`rospug_gui.py`](rospug_gui.py)) :
+  - **3 Allures (Gaits)** : *Trot Dynamique*, *Marche 4-temps (Walk)* et *Amble (Pace)* + pas de crabe latéral ($V_y$) et rotation ($\omega_z$).
+  - **4 Postures & Actions** : *Debout (Stand)*, *Accroupi (Crouch)*, *Assis (Sit)* et *Salut (Play Bow)* + contrôle d'assiette IMU (Roulis, Tangage, Hauteur).
+- **Capteurs Embarqués** : Tourelle **LiDAR ToF 360°** rotative avec évitement d'obstacles autonome et **Caméra Frontale Grand-Angle HD 8MP** (Flux RGB & Profondeur Thermique 3D).
+
+---
+
+### 3. 🕷️ Robot Hexapode 18-DOF (Dynamixel AX-18)
 - **Cinématique Inverse (IK) 3-DOF Analytique** sur les 6 pattes ([`hexapod_kinematics.py`](hexapod_kinematics.py)).
 - **Marche Tripode Omnidirectionnelle** ($V_x, V_y, \omega_z$) à profil cycloïde sans impact.
 - **Contrôle d'Assiette 6-DOF** (Hauteur $Z$, Roulis, Tangage, Lacet) pieds ancrés au sol.
@@ -55,3 +65,4 @@ python sim_launcher.py
 Consultez également :
 - 📖 [**Guide Complet PyBullet & Télécommandes (`PYBULLET_GUIDE.md`)**](PYBULLET_GUIDE.md)
 - 📖 [**Guide ROS2 & Gazebo (`ROS2_GAZEBO_GUIDE.md`)**](ROS2_GAZEBO_GUIDE.md)
+

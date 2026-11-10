@@ -101,10 +101,16 @@ class HexapodControlPanel:
         ).pack(side="right", padx=3)
 
         tk.Button(
-            nav_header, text="🤖 Basculer vers MentorPi", bg="#00b894", fg="white",
-            font=("Arial", 9, "bold"), padx=8, pady=2,
+            nav_header, text="🤖 MentorPi", bg="#00b894", fg="white",
+            font=("Arial", 9, "bold"), padx=6, pady=2,
             command=lambda: self._trigger_cmd("SWITCH_MENTORPI")
-        ).pack(side="right", padx=3)
+        ).pack(side="right", padx=2)
+
+        tk.Button(
+            nav_header, text="🐕 ROSPug", bg="#ff6b1a", fg="white",
+            font=("Arial", 9, "bold"), padx=6, pady=2,
+            command=lambda: self._trigger_cmd("SWITCH_ROSPUG")
+        ).pack(side="right", padx=2)
 
         # Barre supérieure : boutons d'urgence et statuts
         top_frame = ttk.Frame(self.root, padding=6)

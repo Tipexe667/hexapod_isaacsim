@@ -1,0 +1,330 @@
+<?xml version="1.0"?>
+<!-- Exported by SolidCraft & optimized for PyBullet; units: m, kg, rad -->
+<robot name="rospug">
+  <link name="base_link">
+    <inertial>
+      <origin xyz="0 0 0.140" rpy="0 0 0"/>
+      <mass value="0.15"/>
+      <inertia ixx="0.0005" ixy="0" ixz="0" iyy="0.0008" iyz="0" izz="0.0010"/>
+    </inertial>
+  </link>
+
+  <link name="Chassis_Base">
+    <inertial>
+      <origin xyz="-0.008461 0.000126 0.148392" rpy="0 0 0"/>
+      <mass value="0.967380"/>
+      <inertia ixx="0.001350" ixy="0" ixz="0.000333" iyy="0.004959" iyz="0" izz="0.005308"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry><mesh filename="rospug-Chassis_Base.stl"/></geometry>
+      <material name="Chassis_Black"><color rgba="0.118 0.133 0.157 1"/></material>
+    </visual>
+    <visual>
+      <origin xyz="0 0 0.0001" rpy="0 0 0"/>
+      <geometry><mesh filename="mesh_side_armor.stl" scale="0.001 0.001 0.001"/></geometry>
+      <material name="Armor_Orange"><color rgba="1.0 0.420 0.102 1"/></material>
+    </visual>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry><mesh filename="mesh_standoffs.stl" scale="0.001 0.001 0.001"/></geometry>
+      <material name="Standoffs_Brass"><color rgba="0.831 0.686 0.216 1"/></material>
+    </visual>
+    <visual>
+      <origin xyz="0 0 0.0002" rpy="0 0 0"/>
+      <geometry><mesh filename="mesh_heatsink.stl" scale="0.001 0.001 0.001"/></geometry>
+      <material name="Heatsink_Gunmetal"><color rgba="0.50 0.55 0.62 1"/></material>
+    </visual>
+    <visual>
+      <origin xyz="0.0002 0 0.0002" rpy="0 0 0"/>
+      <geometry><mesh filename="mesh_cyan_optics.stl" scale="0.001 0.001 0.001"/></geometry>
+      <material name="Cyan_Optics"><color rgba="0.0 0.722 0.902 1"/></material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0.140" rpy="0 0 0"/>
+      <geometry><box size="0.220 0.110 0.046"/></geometry>
+    </collision>
+  </link>
+
+  <link name="LiDAR_Rotor_Turret">
+    <inertial>
+      <origin xyz="0 0 0.012221" rpy="0 0 0"/>
+      <mass value="0.057597"/>
+      <inertia ixx="1.1336e-5" ixy="0" ixz="0" iyy="1.1336e-5" iyz="0" izz="1.7080e-5"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0.038 -0.175" rpy="0 0 -1.5707963267948966"/>
+      <geometry><mesh filename="rospug-LiDAR_Rotor_Turret.stl"/></geometry>
+      <material name="LiDAR_Cyan"><color rgba="0.0 0.722 0.902 1"/></material>
+    </visual>
+  </link>
+
+  <link name="Hip_Module_FL">
+    <inertial>
+      <origin xyz="0 -0.011848 0" rpy="0 0 0"/>
+      <mass value="0.063068"/>
+      <inertia ixx="1.3144e-5" ixy="0" ixz="0" iyy="1.0486e-5" iyz="0" izz="1.0418e-5"/>
+    </inertial>
+    <visual>
+      <origin xyz="-0.138 0.058 -0.085" rpy="0 -1.5707963267948966 -3.141592653589793"/>
+      <geometry><mesh filename="rospug-Hip_Module_FL.stl"/></geometry>
+      <material name="Hip_FL_Color"><color rgba="0.271 0.298 0.337 1"/></material>
+    </visual>
+  </link>
+
+  <link name="Hip_Module_FR">
+    <inertial>
+      <origin xyz="0 0.011848 0" rpy="0 0 0"/>
+      <mass value="0.063068"/>
+      <inertia ixx="1.3144e-5" ixy="0" ixz="0" iyy="1.0486e-5" iyz="0" izz="1.0418e-5"/>
+    </inertial>
+    <visual>
+      <origin xyz="-0.138 -0.058 -0.085" rpy="0 -1.5707963267948966 -3.141592653589793"/>
+      <geometry><mesh filename="rospug-Hip_Module_FR.stl"/></geometry>
+      <material name="Hip_FR_Color"><color rgba="0.271 0.298 0.337 1"/></material>
+    </visual>
+  </link>
+
+  <link name="Hip_Module_RL">
+    <inertial>
+      <origin xyz="0 -0.011848 0" rpy="0 0 0"/>
+      <mass value="0.063068"/>
+      <inertia ixx="1.3144e-5" ixy="0" ixz="0" iyy="1.0486e-5" iyz="0" izz="1.0418e-5"/>
+    </inertial>
+    <visual>
+      <origin xyz="-0.138 0.058 0.085" rpy="0 -1.5707963267948966 -3.141592653589793"/>
+      <geometry><mesh filename="rospug-Hip_Module_RL.stl"/></geometry>
+      <material name="Hip_RL_Color"><color rgba="0.271 0.298 0.337 1"/></material>
+    </visual>
+  </link>
+
+  <link name="Hip_Module_RR">
+    <inertial>
+      <origin xyz="0 0.011848 0" rpy="0 0 0"/>
+      <mass value="0.063068"/>
+      <inertia ixx="1.3144e-5" ixy="0" ixz="0" iyy="1.0486e-5" iyz="0" izz="1.0418e-5"/>
+    </inertial>
+    <visual>
+      <origin xyz="-0.138 -0.058 0.085" rpy="0 -1.5707963267948966 -3.141592653589793"/>
+      <geometry><mesh filename="rospug-Hip_Module_RR.stl"/></geometry>
+      <material name="Hip_RR_Color"><color rgba="0.271 0.298 0.337 1"/></material>
+    </visual>
+  </link>
+
+  <link name="Thigh_Module_FL">
+    <inertial>
+      <origin xyz="0.045649 0.012406 0.000607" rpy="0 0 0"/>
+      <mass value="0.058884"/>
+      <inertia ixx="3.0562e-5" ixy="0" ixz="0" iyy="5.3096e-5" iyz="0" izz="5.5433e-5"/>
+    </inertial>
+    <visual>
+      <origin xyz="0.138 0.085 -0.082" rpy="1.5707963267948966 0 -1.5707963267948966"/>
+      <geometry><mesh filename="rospug-Thigh_Module_FL.stl"/></geometry>
+      <material name="Thigh_Orange"><color rgba="1.0 0.420 0.102 1"/></material>
+    </visual>
+  </link>
+
+  <link name="Thigh_Module_FR">
+    <inertial>
+      <origin xyz="0.045649 0.012406 -0.000607" rpy="0 0 0"/>
+      <mass value="0.058884"/>
+      <inertia ixx="3.0562e-5" ixy="0" ixz="0" iyy="5.3096e-5" iyz="0" izz="5.5433e-5"/>
+    </inertial>
+    <visual>
+      <origin xyz="0.138 0.085 0.082" rpy="1.5707963267948966 0 -1.5707963267948966"/>
+      <geometry><mesh filename="rospug-Thigh_Module_FR.stl"/></geometry>
+      <material name="Thigh_Orange"><color rgba="1.0 0.420 0.102 1"/></material>
+    </visual>
+  </link>
+
+  <link name="Thigh_Module_RL">
+    <inertial>
+      <origin xyz="0.045649 0.012406 0.000607" rpy="0 0 0"/>
+      <mass value="0.058884"/>
+      <inertia ixx="3.0562e-5" ixy="0" ixz="0" iyy="5.3096e-5" iyz="0" izz="5.5433e-5"/>
+    </inertial>
+    <visual>
+      <origin xyz="0.138 -0.085 -0.082" rpy="1.5707963267948966 0 -1.5707963267948966"/>
+      <geometry><mesh filename="rospug-Thigh_Module_RL.stl"/></geometry>
+      <material name="Thigh_Orange"><color rgba="1.0 0.420 0.102 1"/></material>
+    </visual>
+  </link>
+
+  <link name="Thigh_Module_RR">
+    <inertial>
+      <origin xyz="0.045649 0.012406 -0.000607" rpy="0 0 0"/>
+      <mass value="0.058884"/>
+      <inertia ixx="3.0562e-5" ixy="0" ixz="0" iyy="5.3096e-5" iyz="0" izz="5.5433e-5"/>
+    </inertial>
+    <visual>
+      <origin xyz="0.138 -0.085 0.082" rpy="1.5707963267948966 0 -1.5707963267948966"/>
+      <geometry><mesh filename="rospug-Thigh_Module_RR.stl"/></geometry>
+      <material name="Thigh_Orange"><color rgba="1.0 0.420 0.102 1"/></material>
+    </visual>
+  </link>
+
+  <link name="Calf_Module_FL">
+    <inertial>
+      <origin xyz="0.040201 -0.013916 0" rpy="0 0 0"/>
+      <mass value="0.045088"/>
+      <inertia ixx="2.3363e-5" ixy="0" ixz="0" iyy="4.0302e-5" iyz="0" izz="4.9216e-5"/>
+    </inertial>
+    <visual>
+      <origin xyz="0.064 0.067 -0.082" rpy="1.5707963267948966 0 -1.5707963267948966"/>
+      <geometry><mesh filename="rospug-Calf_Module_FL.stl"/></geometry>
+      <material name="Calf_Gunmetal"><color rgba="0.22 0.25 0.29 1"/></material>
+    </visual>
+    <collision>
+      <origin xyz="0.052 -0.018 0" rpy="0 0 0"/>
+      <geometry><sphere radius="0.012"/></geometry>
+    </collision>
+  </link>
+
+  <link name="Calf_Module_FR">
+    <inertial>
+      <origin xyz="0.040201 -0.013916 0" rpy="0 0 0"/>
+      <mass value="0.045088"/>
+      <inertia ixx="2.3363e-5" ixy="0" ixz="0" iyy="4.0302e-5" iyz="0" izz="4.9216e-5"/>
+    </inertial>
+    <visual>
+      <origin xyz="0.064 0.067 0.082" rpy="1.5707963267948966 0 -1.5707963267948966"/>
+      <geometry><mesh filename="rospug-Calf_Module_FR.stl"/></geometry>
+      <material name="Calf_Gunmetal"><color rgba="0.22 0.25 0.29 1"/></material>
+    </visual>
+    <collision>
+      <origin xyz="0.052 -0.018 0" rpy="0 0 0"/>
+      <geometry><sphere radius="0.012"/></geometry>
+    </collision>
+  </link>
+
+  <link name="Calf_Module_RL">
+    <inertial>
+      <origin xyz="0.040201 -0.013916 0" rpy="0 0 0"/>
+      <mass value="0.045088"/>
+      <inertia ixx="2.3363e-5" ixy="0" ixz="0" iyy="4.0302e-5" iyz="0" izz="4.9216e-5"/>
+    </inertial>
+    <visual>
+      <origin xyz="0.064 -0.103 -0.082" rpy="1.5707963267948966 0 -1.5707963267948966"/>
+      <geometry><mesh filename="rospug-Calf_Module_RL.stl"/></geometry>
+      <material name="Calf_Gunmetal"><color rgba="0.22 0.25 0.29 1"/></material>
+    </visual>
+    <collision>
+      <origin xyz="0.052 -0.018 0" rpy="0 0 0"/>
+      <geometry><sphere radius="0.012"/></geometry>
+    </collision>
+  </link>
+
+  <link name="Calf_Module_RR">
+    <inertial>
+      <origin xyz="0.040201 -0.013916 0" rpy="0 0 0"/>
+      <mass value="0.045088"/>
+      <inertia ixx="2.3363e-5" ixy="0" ixz="0" iyy="4.0302e-5" iyz="0" izz="4.9216e-5"/>
+    </inertial>
+    <visual>
+      <origin xyz="0.064 -0.103 0.082" rpy="1.5707963267948966 0 -1.5707963267948966"/>
+      <geometry><mesh filename="rospug-Calf_Module_RR.stl"/></geometry>
+      <material name="Calf_Gunmetal"><color rgba="0.22 0.25 0.29 1"/></material>
+    </visual>
+    <collision>
+      <origin xyz="0.052 -0.018 0" rpy="0 0 0"/>
+      <geometry><sphere radius="0.012"/></geometry>
+    </collision>
+  </link>
+
+  <joint name="Chassis_Base_fixed" type="fixed">
+    <parent link="base_link"/>
+    <child link="Chassis_Base"/>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+  </joint>
+  <joint name="Joint_LiDAR_Spin" type="continuous">
+    <parent link="Chassis_Base"/>
+    <child link="LiDAR_Rotor_Turret"/>
+    <origin xyz="0.038 0 0.175" rpy="0 0 1.5707963267948966"/>
+    <axis xyz="0 0 1"/>
+    <limit effort="10" velocity="30"/>
+  </joint>
+  <joint name="Joint_Hip_FL" type="revolute">
+    <parent link="Chassis_Base"/>
+    <child link="Hip_Module_FL"/>
+    <origin xyz="0.085 0.058 0.138" rpy="0 -1.5707963267948966 -3.141592653589793"/>
+    <axis xyz="0 0 1"/>
+    <limit lower="-0.610865" upper="0.610865" effort="15" velocity="10"/>
+  </joint>
+  <joint name="Joint_Hip_FR" type="revolute">
+    <parent link="Chassis_Base"/>
+    <child link="Hip_Module_FR"/>
+    <origin xyz="0.085 -0.058 0.138" rpy="0 -1.5707963267948966 -3.141592653589793"/>
+    <axis xyz="0 0 1"/>
+    <limit lower="-0.610865" upper="0.610865" effort="15" velocity="10"/>
+  </joint>
+  <joint name="Joint_Hip_RL" type="revolute">
+    <parent link="Chassis_Base"/>
+    <child link="Hip_Module_RL"/>
+    <origin xyz="-0.085 0.058 0.138" rpy="0 -1.5707963267948966 -3.141592653589793"/>
+    <axis xyz="0 0 1"/>
+    <limit lower="-0.610865" upper="0.610865" effort="15" velocity="10"/>
+  </joint>
+  <joint name="Joint_Hip_RR" type="revolute">
+    <parent link="Chassis_Base"/>
+    <child link="Hip_Module_RR"/>
+    <origin xyz="-0.085 -0.058 0.138" rpy="0 -1.5707963267948966 -3.141592653589793"/>
+    <axis xyz="0 0 1"/>
+    <limit lower="-0.610865" upper="0.610865" effort="15" velocity="10"/>
+  </joint>
+  <joint name="Joint_Shoulder_FL" type="revolute">
+    <parent link="Hip_Module_FL"/>
+    <child link="Thigh_Module_FL"/>
+    <origin xyz="0 -0.024 0" rpy="-1.5707963267948966 0 3.141592653589793"/>
+    <axis xyz="0 0 1"/>
+    <limit lower="-1.047198" upper="1.047198" effort="15" velocity="10"/>
+  </joint>
+  <joint name="Joint_Shoulder_FR" type="revolute">
+    <parent link="Hip_Module_FR"/>
+    <child link="Thigh_Module_FR"/>
+    <origin xyz="0 0.024 0" rpy="-1.5707963267948966 0 3.141592653589793"/>
+    <axis xyz="0 0 1"/>
+    <limit lower="-1.047198" upper="1.047198" effort="15" velocity="10"/>
+  </joint>
+  <joint name="Joint_Shoulder_RL" type="revolute">
+    <parent link="Hip_Module_RL"/>
+    <child link="Thigh_Module_RL"/>
+    <origin xyz="0 -0.024 0" rpy="-1.5707963267948966 0 3.141592653589793"/>
+    <axis xyz="0 0 1"/>
+    <limit lower="-1.047198" upper="1.047198" effort="15" velocity="10"/>
+  </joint>
+  <joint name="Joint_Shoulder_RR" type="revolute">
+    <parent link="Hip_Module_RR"/>
+    <child link="Thigh_Module_RR"/>
+    <origin xyz="0 0.024 0" rpy="-1.5707963267948966 0 3.141592653589793"/>
+    <axis xyz="0 0 1"/>
+    <limit lower="-1.047198" upper="1.047198" effort="15" velocity="10"/>
+  </joint>
+  <joint name="Joint_Knee_FL" type="revolute">
+    <parent link="Thigh_Module_FL"/>
+    <child link="Calf_Module_FL"/>
+    <origin xyz="0.074 0.018 0" rpy="0 0 0"/>
+    <axis xyz="0 0 1"/>
+    <limit lower="-1.134464" upper="1.134464" effort="15" velocity="10"/>
+  </joint>
+  <joint name="Joint_Knee_FR" type="revolute">
+    <parent link="Thigh_Module_FR"/>
+    <child link="Calf_Module_FR"/>
+    <origin xyz="0.074 0.018 0" rpy="0 0 0"/>
+    <axis xyz="0 0 1"/>
+    <limit lower="-1.134464" upper="1.134464" effort="15" velocity="10"/>
+  </joint>
+  <joint name="Joint_Knee_RL" type="revolute">
+    <parent link="Thigh_Module_RL"/>
+    <child link="Calf_Module_RL"/>
+    <origin xyz="0.074 0.018 0" rpy="0 0 0"/>
+    <axis xyz="0 0 1"/>
+    <limit lower="-1.134464" upper="1.134464" effort="15" velocity="10"/>
+  </joint>
+  <joint name="Joint_Knee_RR" type="revolute">
+    <parent link="Thigh_Module_RR"/>
+    <child link="Calf_Module_RR"/>
+    <origin xyz="0.074 0.018 0" rpy="0 0 0"/>
+    <axis xyz="0 0 1"/>
+    <limit lower="-1.134464" upper="1.134464" effort="15" velocity="10"/>
+  </joint>
+</robot>

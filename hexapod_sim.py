@@ -228,6 +228,8 @@ class HexapodSimulation:
                 self.arena_mgr.toggle_arena(self.panel.arena_var.get())
         elif cmd_type == "SWITCH_MENU":
             self.switch_target = "MENU"
+        elif cmd_type == "SWITCH_ROSPUG":
+            self.switch_target = "ROSPUG"
         elif cmd_type == "SWITCH_MENTORPI":
             self.switch_target = "MENTORPI"
 

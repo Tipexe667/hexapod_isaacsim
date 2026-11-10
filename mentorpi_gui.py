@@ -60,11 +60,18 @@ class MentorPiControlGUI:
         btn_menu.pack(side="right", padx=3)
 
         btn_hexapod = tk.Button(
-            header, text="🕷️ Basculer vers Hexapode",
+            header, text="🕷️ Hexapode",
             bg="#6c5ce7", fg="white", font=("Arial", 9, "bold"),
-            padx=8, pady=2, command=self.cmd_switch_hexapod
+            padx=6, pady=2, command=self.cmd_switch_hexapod
         )
-        btn_hexapod.pack(side="right", padx=3)
+        btn_hexapod.pack(side="right", padx=2)
+
+        btn_rospug = tk.Button(
+            header, text="🐕 ROSPug",
+            bg="#ff6b1a", fg="white", font=("Arial", 9, "bold"),
+            padx=6, pady=2, command=lambda: self._trigger_cmd("SWITCH_ROSPUG")
+        )
+        btn_rospug.pack(side="right", padx=2)
 
         notebook = ttk.Notebook(self.root)
         notebook.pack(fill="both", expand=True, padx=8, pady=6)

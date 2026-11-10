@@ -142,6 +142,8 @@ def run_mentorpi_simulation(initial_chassis="T1"):
             arena_mgr.toggle_arena(gui.arena_var.get())
         elif cmd == "SWITCH_MENU":
             switch_target["value"] = "MENU"
+        elif cmd == "SWITCH_ROSPUG":
+            switch_target["value"] = "ROSPUG"
         elif cmd == "SWITCH_HEXAPOD":
             switch_target["value"] = "HEXAPOD"
 
