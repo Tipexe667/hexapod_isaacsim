@@ -1,0 +1,394 @@
+<?xml version="1.0"?>
+<!-- Exported by SolidCraft & optimized for PyBullet; units: m, kg, rad -->
+<robot name="mentorpi">
+  <link name="base_link">
+    <inertial>
+      <origin xyz="0 0 0.040" rpy="0 0 0"/>
+      <mass value="0.15"/>
+      <inertia ixx="0.0005" ixy="0" ixz="0" iyy="0.0008" iyz="0" izz="0.0010"/>
+    </inertial>
+  </link>
+
+  <link name="Chassis_Base">
+    <inertial>
+      <origin xyz="-5.71399e-4 0 0.0474427" rpy="0 0 0"/>
+      <mass value="0.686315"/>
+      <inertia ixx="9.4872e-4" ixy="0" ixz="-2.53657e-5" iyy="0.0030865" iyz="0" izz="0.0036654"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry><mesh filename="mentorpi-Chassis_Base.stl"/></geometry>
+      <material name="Chassis_Base_color"><color rgba="0.133 0.149 0.169 1"/></material>
+    </visual>
+    <!-- Entretoises hexagonales en laiton doré (6x) -->
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry><mesh filename="mesh_standoffs.stl" scale="0.001 0.001 0.001"/></geometry>
+      <material name="Standoffs_Brass"><color rgba="0.831 0.659 0.216 1"/></material>
+    </visual>
+    <!-- 4 Moteurs DC internes en acier argenté -->
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry><mesh filename="mesh_motors.stl" scale="0.001 0.001 0.001"/></geometry>
+      <material name="Motors_Silver"><color rgba="0.722 0.753 0.784 1"/></material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0.048" rpy="0 0 0"/>
+      <geometry><box size="0.205 0.132 0.050"/></geometry>
+    </collision>
+  </link>
+
+  <link name="RPi5_Controller_Module">
+    <inertial>
+      <origin xyz="-0.061398 0 0.096613" rpy="0 0 0"/>
+      <mass value="0.195152"/>
+      <inertia ixx="9.6738e-5" ixy="0" ixz="3.1429e-6" iyy="1.1452e-4" iyz="0" izz="1.7953e-4"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry><mesh filename="mentorpi-RPi5_Controller_Module.stl"/></geometry>
+      <material name="RPi5_Controller_Module_color"><color rgba="0.169 0.192 0.220 1"/></material>
+    </visual>
+  </link>
+
+  <link name="Track_Module_Left">
+    <inertial>
+      <origin xyz="0 0.07645 0.032526" rpy="0 0 0"/>
+      <mass value="0.235085"/>
+      <inertia ixx="1.8924e-4" ixy="0" ixz="0" iyy="0.001189" iyz="0" izz="0.001050"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry><mesh filename="mentorpi-Track_Module_Left.stl"/></geometry>
+      <material name="Track_Module_Left_color"><color rgba="0.110 0.120 0.135 1"/></material>
+    </visual>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry><mesh filename="mesh_rollers_l.stl" scale="0.001 0.001 0.001"/></geometry>
+      <material name="Rollers_Left_Silver"><color rgba="0.722 0.753 0.784 1"/></material>
+    </visual>
+  </link>
+
+  <link name="Track_Module_Right">
+    <inertial>
+      <origin xyz="0 -0.07645 0.032526" rpy="0 0 0"/>
+      <mass value="0.235085"/>
+      <inertia ixx="1.8924e-4" ixy="0" ixz="0" iyy="0.001189" iyz="0" izz="0.001050"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry><mesh filename="mentorpi-Track_Module_Right.stl"/></geometry>
+      <material name="Track_Module_Right_color"><color rgba="0.110 0.120 0.135 1"/></material>
+    </visual>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry><mesh filename="mesh_rollers_r.stl" scale="0.001 0.001 0.001"/></geometry>
+      <material name="Rollers_Right_Silver"><color rgba="0.722 0.753 0.784 1"/></material>
+    </visual>
+  </link>
+
+  <link name="LiDAR_Base_Module">
+    <inertial>
+      <origin xyz="0.018 0 0.090" rpy="0 0 0"/>
+      <mass value="0.059545"/>
+      <inertia ixx="1.5472e-5" ixy="0" ixz="0" iyy="1.5472e-5" iyz="0" izz="2.8404e-5"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry><mesh filename="mentorpi-LiDAR_Base_Module.stl"/></geometry>
+      <material name="LiDAR_Base_Module_color"><color rgba="0.094 0.102 0.118 1"/></material>
+    </visual>
+  </link>
+
+  <link name="Camera_Pan_Base">
+    <inertial>
+      <origin xyz="0.077044 0 0.094599" rpy="0 0 0"/>
+      <mass value="0.053719"/>
+      <inertia ixx="1.1158e-5" ixy="0" ixz="0" iyy="9.0884e-6" iyz="0" izz="1.4485e-5"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry><mesh filename="mentorpi-Camera_Pan_Base.stl"/></geometry>
+      <material name="Camera_Pan_Base_color"><color rgba="0.094 0.102 0.118 1"/></material>
+    </visual>
+  </link>
+
+  <link name="Track_Sprocket_FL">
+    <inertial>
+      <origin xyz="0 0 -0.00104" rpy="0 0 0"/>
+      <mass value="0.116234"/>
+      <inertia ixx="4.3509e-5" ixy="0" ixz="0" iyy="4.3510e-5" iyz="0" izz="6.9082e-5"/>
+    </inertial>
+    <visual>
+      <origin xyz="0.038 0.088 -0.078" rpy="1.5707963267948966 0 -1.5707963267948966"/>
+      <geometry><mesh filename="mentorpi-Track_Sprocket_FL.stl"/></geometry>
+      <material name="Track_Sprocket_FL_color"><color rgba="1.0 0.42 0.0 1"/></material>
+    </visual>
+  </link>
+
+  <link name="Track_Sprocket_RL">
+    <inertial>
+      <origin xyz="0 0 -0.00104" rpy="0 0 0"/>
+      <mass value="0.116234"/>
+      <inertia ixx="4.3509e-5" ixy="0" ixz="0" iyy="4.3510e-5" iyz="0" izz="6.9082e-5"/>
+    </inertial>
+    <visual>
+      <origin xyz="0.038 -0.088 -0.078" rpy="1.5707963267948966 0 -1.5707963267948966"/>
+      <geometry><mesh filename="mentorpi-Track_Sprocket_RL.stl"/></geometry>
+      <material name="Track_Sprocket_RL_color"><color rgba="1.0 0.42 0.0 1"/></material>
+    </visual>
+  </link>
+
+  <link name="Track_Sprocket_FR">
+    <inertial>
+      <origin xyz="0 0 0.00104" rpy="0 0 0"/>
+      <mass value="0.116234"/>
+      <inertia ixx="4.3509e-5" ixy="0" ixz="0" iyy="4.3510e-5" iyz="0" izz="6.9082e-5"/>
+    </inertial>
+    <visual>
+      <origin xyz="0.038 0.088 0.078" rpy="1.5707963267948966 0 -1.5707963267948966"/>
+      <geometry><mesh filename="mentorpi-Track_Sprocket_FR.stl"/></geometry>
+      <material name="Track_Sprocket_FR_color"><color rgba="1.0 0.42 0.0 1"/></material>
+    </visual>
+  </link>
+
+  <link name="Track_Sprocket_RR">
+    <inertial>
+      <origin xyz="0 0 0.00104" rpy="0 0 0"/>
+      <mass value="0.116234"/>
+      <inertia ixx="4.3509e-5" ixy="0" ixz="0" iyy="4.3510e-5" iyz="0" izz="6.9082e-5"/>
+    </inertial>
+    <visual>
+      <origin xyz="0.038 -0.088 0.078" rpy="1.5707963267948966 0 -1.5707963267948966"/>
+      <geometry><mesh filename="mentorpi-Track_Sprocket_RR.stl"/></geometry>
+      <material name="Track_Sprocket_RR_color"><color rgba="1.0 0.42 0.0 1"/></material>
+    </visual>
+  </link>
+
+  <link name="Mecanum_Wheel_FL">
+    <inertial>
+      <origin xyz="0 0 -8.615e-4" rpy="0 0 0"/>
+      <mass value="0.157457"/>
+      <inertia ixx="7.4453e-5" ixy="0" ixz="0" iyy="7.4456e-5" iyz="0" izz="1.2413e-4"/>
+    </inertial>
+    <visual>
+      <origin xyz="0.038 0.072 -0.078" rpy="1.5707963267948966 0 -1.5707963267948966"/>
+      <geometry><mesh filename="mentorpi-Mecanum_Wheel_FL.stl"/></geometry>
+      <material name="Mecanum_Wheel_FL_color"><color rgba="0.227 0.525 1.0 1"/></material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry><cylinder radius="0.0375" length="0.030"/></geometry>
+    </collision>
+  </link>
+
+  <link name="Mecanum_Wheel_RL">
+    <inertial>
+      <origin xyz="0 0 -8.615e-4" rpy="0 0 0"/>
+      <mass value="0.157457"/>
+      <inertia ixx="7.4453e-5" ixy="0" ixz="0" iyy="7.4456e-5" iyz="0" izz="1.2413e-4"/>
+    </inertial>
+    <visual>
+      <origin xyz="0.038 -0.072 -0.078" rpy="1.5707963267948966 0 -1.5707963267948966"/>
+      <geometry><mesh filename="mentorpi-Mecanum_Wheel_RL.stl"/></geometry>
+      <material name="Mecanum_Wheel_RL_color"><color rgba="0.227 0.525 1.0 1"/></material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry><cylinder radius="0.0375" length="0.030"/></geometry>
+    </collision>
+  </link>
+
+  <link name="Mecanum_Wheel_FR">
+    <inertial>
+      <origin xyz="0 0 8.615e-4" rpy="0 0 0"/>
+      <mass value="0.157457"/>
+      <inertia ixx="7.4453e-5" ixy="0" ixz="0" iyy="7.4456e-5" iyz="0" izz="1.2413e-4"/>
+    </inertial>
+    <visual>
+      <origin xyz="0.038 0.072 0.078" rpy="1.5707963267948966 0 -1.5707963267948966"/>
+      <geometry><mesh filename="mentorpi-Mecanum_Wheel_FR.stl"/></geometry>
+      <material name="Mecanum_Wheel_FR_color"><color rgba="0.227 0.525 1.0 1"/></material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry><cylinder radius="0.0375" length="0.030"/></geometry>
+    </collision>
+  </link>
+
+  <link name="Mecanum_Wheel_RR">
+    <inertial>
+      <origin xyz="0 0 8.615e-4" rpy="0 0 0"/>
+      <mass value="0.157457"/>
+      <inertia ixx="7.4453e-5" ixy="0" ixz="0" iyy="7.4456e-5" iyz="0" izz="1.2413e-4"/>
+    </inertial>
+    <visual>
+      <origin xyz="0.038 -0.072 0.078" rpy="1.5707963267948966 0 -1.5707963267948966"/>
+      <geometry><mesh filename="mentorpi-Mecanum_Wheel_RR.stl"/></geometry>
+      <material name="Mecanum_Wheel_RR_color"><color rgba="0.227 0.525 1.0 1"/></material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry><cylinder radius="0.0375" length="0.030"/></geometry>
+    </collision>
+  </link>
+
+  <link name="LiDAR_Rotor_Turret">
+    <inertial>
+      <origin xyz="0 0 0.014763" rpy="0 0 0"/>
+      <mass value="0.072732"/>
+      <inertia ixx="1.6341e-5" ixy="0" ixz="0" iyy="1.6342e-5" iyz="0" izz="2.1804e-5"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0.018 -0.098" rpy="0 0 -1.5707963267948966"/>
+      <geometry><mesh filename="mentorpi-LiDAR_Rotor_Turret.stl"/></geometry>
+      <material name="LiDAR_Rotor_Turret_color"><color rgba="0.094 0.102 0.118 1"/></material>
+    </visual>
+    <!-- Fenêtre optique laser cyan 360° -->
+    <visual>
+      <origin xyz="0 0.018 -0.098" rpy="0 0 -1.5707963267948966"/>
+      <geometry><mesh filename="mesh_lidar_window.stl" scale="0.001 0.001 0.001"/></geometry>
+      <material name="LiDAR_Cyan_Window"><color rgba="0.050 0.650 0.900 1"/></material>
+    </visual>
+  </link>
+
+  <link name="Camera_Pan_Bracket">
+    <inertial>
+      <origin xyz="0 0 0.013022" rpy="0 0 0"/>
+      <mass value="0.020294"/>
+      <inertia ixx="3.8126e-6" ixy="0" ixz="0" iyy="1.1557e-5" iyz="0" izz="9.6711e-6"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0.078 -0.109" rpy="0 0 -1.5707963267948966"/>
+      <geometry><mesh filename="mentorpi-Camera_Pan_Bracket.stl"/></geometry>
+      <material name="Camera_Pan_Bracket_color"><color rgba="0.094 0.102 0.118 1"/></material>
+    </visual>
+  </link>
+
+  <link name="Camera_Depth_3D_Head">
+    <inertial>
+      <origin xyz="-0.019511 -0.001290 0" rpy="0 0 0"/>
+      <mass value="0.148564"/>
+      <inertia ixx="1.4814e-4" ixy="0" ixz="0" iyy="1.5605e-4" iyz="0" izz="3.0139e-5"/>
+    </inertial>
+    <visual>
+      <origin xyz="0.14 0.078 0" rpy="1.5707963267948966 0 -1.5707963267948966"/>
+      <geometry><mesh filename="mentorpi-Camera_Depth_3D_Head.stl"/></geometry>
+      <material name="Camera_Depth_3D_Head_color"><color rgba="0.847 0.867 0.902 1"/></material>
+    </visual>
+    <!-- 3 Lentilles optiques en verre sombre -->
+    <visual>
+      <origin xyz="0.14 0.078 0" rpy="1.5707963267948966 0 -1.5707963267948966"/>
+      <geometry><mesh filename="mesh_cam_glass.stl" scale="0.001 0.001 0.001"/></geometry>
+      <material name="Camera_Glass_Lenses"><color rgba="0.039 0.055 0.094 1"/></material>
+    </visual>
+  </link>
+
+  <joint name="Chassis_Base_fixed" type="fixed">
+    <parent link="base_link"/>
+    <child link="Chassis_Base"/>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+  </joint>
+  <joint name="Rigid_Group_102_124" type="fixed">
+    <parent link="Chassis_Base"/>
+    <child link="RPi5_Controller_Module"/>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+  </joint>
+  <joint name="Rigid_Group_102_130" type="fixed">
+    <parent link="Chassis_Base"/>
+    <child link="Track_Module_Left"/>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+  </joint>
+  <joint name="Rigid_Group_102_137" type="fixed">
+    <parent link="Chassis_Base"/>
+    <child link="Track_Module_Right"/>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+  </joint>
+  <joint name="Rigid_Group_102_168" type="fixed">
+    <parent link="Chassis_Base"/>
+    <child link="LiDAR_Base_Module"/>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+  </joint>
+  <joint name="Rigid_Group_102_176" type="fixed">
+    <parent link="Chassis_Base"/>
+    <child link="Camera_Pan_Base"/>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+  </joint>
+  <joint name="Joint_Sprocket_FL" type="continuous">
+    <parent link="Chassis_Base"/>
+    <child link="Track_Sprocket_FL"/>
+    <origin xyz="0.088 0.078 0.038" rpy="0 1.5707963267948966 1.5707963267948966"/>
+    <axis xyz="0 0 1"/>
+    <limit effort="10" velocity="25"/>
+  </joint>
+  <joint name="Joint_Sprocket_RL" type="continuous">
+    <parent link="Chassis_Base"/>
+    <child link="Track_Sprocket_RL"/>
+    <origin xyz="-0.088 0.078 0.038" rpy="0 1.5707963267948966 1.5707963267948966"/>
+    <axis xyz="0 0 1"/>
+    <limit effort="10" velocity="25"/>
+  </joint>
+  <joint name="Joint_Sprocket_FR" type="continuous">
+    <parent link="Chassis_Base"/>
+    <child link="Track_Sprocket_FR"/>
+    <origin xyz="0.088 -0.078 0.038" rpy="0 1.5707963267948966 1.5707963267948966"/>
+    <axis xyz="0 0 1"/>
+    <limit effort="10" velocity="25"/>
+  </joint>
+  <joint name="Joint_Sprocket_RR" type="continuous">
+    <parent link="Chassis_Base"/>
+    <child link="Track_Sprocket_RR"/>
+    <origin xyz="-0.088 -0.078 0.038" rpy="0 1.5707963267948966 1.5707963267948966"/>
+    <axis xyz="0 0 1"/>
+    <limit effort="10" velocity="25"/>
+  </joint>
+  <joint name="Joint_Mecanum_FL" type="continuous">
+    <parent link="Chassis_Base"/>
+    <child link="Mecanum_Wheel_FL"/>
+    <origin xyz="0.072 0.078 0.038" rpy="0 1.5707963267948966 1.5707963267948966"/>
+    <axis xyz="0 0 1"/>
+    <limit effort="10" velocity="25"/>
+  </joint>
+  <joint name="Joint_Mecanum_RL" type="continuous">
+    <parent link="Chassis_Base"/>
+    <child link="Mecanum_Wheel_RL"/>
+    <origin xyz="-0.072 0.078 0.038" rpy="0 1.5707963267948966 1.5707963267948966"/>
+    <axis xyz="0 0 1"/>
+    <limit effort="10" velocity="25"/>
+  </joint>
+  <joint name="Joint_Mecanum_FR" type="continuous">
+    <parent link="Chassis_Base"/>
+    <child link="Mecanum_Wheel_FR"/>
+    <origin xyz="0.072 -0.078 0.038" rpy="0 1.5707963267948966 1.5707963267948966"/>
+    <axis xyz="0 0 1"/>
+    <limit effort="10" velocity="25"/>
+  </joint>
+  <joint name="Joint_Mecanum_RR" type="continuous">
+    <parent link="Chassis_Base"/>
+    <child link="Mecanum_Wheel_RR"/>
+    <origin xyz="-0.072 -0.078 0.038" rpy="0 1.5707963267948966 1.5707963267948966"/>
+    <axis xyz="0 0 1"/>
+    <limit effort="10" velocity="25"/>
+  </joint>
+  <joint name="Joint_LiDAR_Spin" type="continuous">
+    <parent link="LiDAR_Base_Module"/>
+    <child link="LiDAR_Rotor_Turret"/>
+    <origin xyz="0.018 0 0.098" rpy="0 0 1.5707963267948966"/>
+    <axis xyz="0 0 1"/>
+    <limit effort="5" velocity="30"/>
+  </joint>
+  <joint name="Joint_Camera_Pan" type="revolute">
+    <parent link="Camera_Pan_Base"/>
+    <child link="Camera_Pan_Bracket"/>
+    <origin xyz="0.078 0 0.109" rpy="0 0 1.5707963267948966"/>
+    <axis xyz="0 0 1"/>
+    <limit lower="-1.5707963267948966" upper="1.5707963267948966" effort="5" velocity="10"/>
+  </joint>
+  <joint name="Joint_Camera_Tilt" type="revolute">
+    <parent link="Camera_Pan_Bracket"/>
+    <child link="Camera_Depth_3D_Head"/>
+    <origin xyz="0 0 0.031" rpy="0 1.5707963267948966 0"/>
+    <axis xyz="0 0 1"/>
+    <limit lower="-0.7853981633974483" upper="1.0471975511965976" effort="5" velocity="10"/>
+  </joint>
+</robot>

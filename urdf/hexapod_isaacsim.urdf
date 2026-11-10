@@ -1,0 +1,830 @@
+<?xml version="1.0" encoding="utf-8"?>
+<robot name="hexapod_isaacsim">
+
+  <!-- ==================== MATERIALS ==================== -->
+  <material name="dark_grey">
+    <color rgba="0.2 0.2 0.2 1.0" />
+  </material>
+  <material name="light_grey">
+    <color rgba="0.75 0.75 0.75 1.0" />
+  </material>
+  <material name="black">
+    <color rgba="0.05 0.05 0.05 1.0" />
+  </material>
+  <material name="red">
+    <color rgba="0.8 0.1 0.1 1.0" />
+  </material>
+  <material name="rubber_black">
+    <color rgba="0.1 0.1 0.1 1.0" />
+  </material>
+
+  <!-- ==================== BASE LINK ==================== -->
+  <link name="base_link">
+    <inertial>
+      <origin xyz="0.000224 -0.000008 0.019617" rpy="0 0 0" />
+      <mass value="0.33969" />
+      <inertia
+        ixx="0.00015307" ixy="-2.5318e-09" ixz="-1.1664e-14"
+        iyy="0.00016072" iyz="6.5896e-14" izz="0.00026703" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://hexapod_isaacsim/meshes/base_link.STL" />
+      </geometry>
+      <material name="light_grey" />
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://hexapod_isaacsim/meshes/base_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+
+  <!-- ==================== LEG 1 (REAR_LEFT) ==================== -->
+  <!-- Coxa Joint -->
+  <joint name="coxa_joint_leg1" type="revolute">
+    <origin xyz="-0.070287 0.051653 0.018880" rpy="0 0 2.1817" />
+    <parent link="base_link" />
+    <child link="coxa_leg1" />
+    <axis xyz="0 0 1" />
+    <limit lower="-2.61" upper="2.61" effort="1.8" velocity="8.0" />
+    <dynamics damping="0.1" friction="0.05" />
+  </joint>
+
+  <!-- Coxa Link -->
+  <link name="coxa_leg1">
+    <inertial>
+      <origin xyz="0.020300 -0.000057 0.000043" rpy="0 0 0" />
+      <mass value="0.015986" />
+      <inertia
+        ixx="6.1573e-06" ixy="-9.8142e-10" ixz="9.8142e-10"
+        iyy="4.2615e-06" iyz="2.4852e-17" izz="4.2615e-06" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://hexapod_isaacsim/meshes/coxa.STL" />
+      </geometry>
+      <material name="light_grey" />
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://hexapod_isaacsim/meshes/coxa.STL" />
+      </geometry>
+    </collision>
+  </link>
+
+  <!-- Femur Joint -->
+  <joint name="femur_joint_leg1" type="revolute">
+    <origin xyz="0.040600 0 0" rpy="0 0 0" />
+    <parent link="coxa_leg1" />
+    <child link="femur_leg1" />
+    <axis xyz="0 1 0" />
+    <limit lower="-2.61" upper="2.61" effort="1.8" velocity="8.0" />
+    <dynamics damping="0.1" friction="0.05" />
+  </joint>
+
+  <!-- Femur Link -->
+  <link name="femur_leg1">
+    <inertial>
+      <origin xyz="0.041637 -0.000831 0.000000" rpy="0 0 0" />
+      <mass value="0.092287" />
+      <inertia
+        ixx="1.3978e-05" ixy="3.3089e-11" ixz="1.5036e-09"
+        iyy="2.0357e-05" iyz="-6.7035e-13" izz="2.4025e-05" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://hexapod_isaacsim/meshes/femur.STL" />
+      </geometry>
+      <material name="black" />
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://hexapod_isaacsim/meshes/femur.STL" />
+      </geometry>
+    </collision>
+  </link>
+
+  <!-- Tibia Joint -->
+  <joint name="tibia_joint_leg1" type="revolute">
+    <origin xyz="0.083000 0 0" rpy="0 0 0" />
+    <parent link="femur_leg1" />
+    <child link="tibia_leg1" />
+    <axis xyz="0 1 0" />
+    <limit lower="-2.61" upper="2.61" effort="1.8" velocity="8.0" />
+    <dynamics damping="0.1" friction="0.05" />
+  </joint>
+
+  <!-- Tibia Link -->
+  <link name="tibia_leg1">
+    <inertial>
+      <origin xyz="0.082775 0.000233 -0.000026" rpy="0 0 0" />
+      <mass value="0.043186" />
+      <inertia
+        ixx="5.0086e-06" ixy="6.6214e-08" ixz="-9.7801e-13"
+        iyy="3.7449e-05" iyz="-1.8078e-12" izz="3.6338e-05" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="1.5708 0 0" />
+      <geometry>
+        <mesh filename="package://hexapod_isaacsim/meshes/tibia.STL" />
+      </geometry>
+      <material name="red" />
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="1.5708 0 0" />
+      <geometry>
+        <mesh filename="package://hexapod_isaacsim/meshes/tibia.STL" />
+      </geometry>
+    </collision>
+  </link>
+
+  <!-- Foot / Toe Contact Link -->
+  <joint name="foot_joint_leg1" type="fixed">
+    <origin xyz="0.148500 0 0" rpy="0 0 0" />
+    <parent link="tibia_leg1" />
+    <child link="foot_leg1" />
+  </joint>
+
+  <link name="foot_leg1">
+    <inertial>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <mass value="0.001" />
+      <inertia ixx="1e-06" ixy="0" ixz="0" iyy="1e-06" iyz="0" izz="1e-06" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <sphere radius="0.008" />
+      </geometry>
+      <material name="rubber_black" />
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <sphere radius="0.008" />
+      </geometry>
+    </collision>
+  </link>
+
+  <!-- ==================== LEG 2 (MIDDLE_LEFT) ==================== -->
+  <!-- Coxa Joint -->
+  <joint name="coxa_joint_leg2" type="revolute">
+    <origin xyz="0.000000 0.070500 0.018880" rpy="0 0 1.5708" />
+    <parent link="base_link" />
+    <child link="coxa_leg2" />
+    <axis xyz="0 0 1" />
+    <limit lower="-2.61" upper="2.61" effort="1.8" velocity="8.0" />
+    <dynamics damping="0.1" friction="0.05" />
+  </joint>
+
+  <!-- Coxa Link -->
+  <link name="coxa_leg2">
+    <inertial>
+      <origin xyz="0.020300 -0.000057 0.000043" rpy="0 0 0" />
+      <mass value="0.015986" />
+      <inertia
+        ixx="6.1573e-06" ixy="-9.8142e-10" ixz="9.8142e-10"
+        iyy="4.2615e-06" iyz="2.4852e-17" izz="4.2615e-06" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://hexapod_isaacsim/meshes/coxa.STL" />
+      </geometry>
+      <material name="light_grey" />
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://hexapod_isaacsim/meshes/coxa.STL" />
+      </geometry>
+    </collision>
+  </link>
+
+  <!-- Femur Joint -->
+  <joint name="femur_joint_leg2" type="revolute">
+    <origin xyz="0.040600 0 0" rpy="0 0 0" />
+    <parent link="coxa_leg2" />
+    <child link="femur_leg2" />
+    <axis xyz="0 1 0" />
+    <limit lower="-2.61" upper="2.61" effort="1.8" velocity="8.0" />
+    <dynamics damping="0.1" friction="0.05" />
+  </joint>
+
+  <!-- Femur Link -->
+  <link name="femur_leg2">
+    <inertial>
+      <origin xyz="0.041637 -0.000831 0.000000" rpy="0 0 0" />
+      <mass value="0.092287" />
+      <inertia
+        ixx="1.3978e-05" ixy="3.3089e-11" ixz="1.5036e-09"
+        iyy="2.0357e-05" iyz="-6.7035e-13" izz="2.4025e-05" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://hexapod_isaacsim/meshes/femur.STL" />
+      </geometry>
+      <material name="black" />
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://hexapod_isaacsim/meshes/femur.STL" />
+      </geometry>
+    </collision>
+  </link>
+
+  <!-- Tibia Joint -->
+  <joint name="tibia_joint_leg2" type="revolute">
+    <origin xyz="0.083000 0 0" rpy="0 0 0" />
+    <parent link="femur_leg2" />
+    <child link="tibia_leg2" />
+    <axis xyz="0 1 0" />
+    <limit lower="-2.61" upper="2.61" effort="1.8" velocity="8.0" />
+    <dynamics damping="0.1" friction="0.05" />
+  </joint>
+
+  <!-- Tibia Link -->
+  <link name="tibia_leg2">
+    <inertial>
+      <origin xyz="0.082775 0.000233 -0.000026" rpy="0 0 0" />
+      <mass value="0.043186" />
+      <inertia
+        ixx="5.0086e-06" ixy="6.6214e-08" ixz="-9.7801e-13"
+        iyy="3.7449e-05" iyz="-1.8078e-12" izz="3.6338e-05" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="1.5708 0 0" />
+      <geometry>
+        <mesh filename="package://hexapod_isaacsim/meshes/tibia.STL" />
+      </geometry>
+      <material name="red" />
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="1.5708 0 0" />
+      <geometry>
+        <mesh filename="package://hexapod_isaacsim/meshes/tibia.STL" />
+      </geometry>
+    </collision>
+  </link>
+
+  <!-- Foot / Toe Contact Link -->
+  <joint name="foot_joint_leg2" type="fixed">
+    <origin xyz="0.148500 0 0" rpy="0 0 0" />
+    <parent link="tibia_leg2" />
+    <child link="foot_leg2" />
+  </joint>
+
+  <link name="foot_leg2">
+    <inertial>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <mass value="0.001" />
+      <inertia ixx="1e-06" ixy="0" ixz="0" iyy="1e-06" iyz="0" izz="1e-06" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <sphere radius="0.008" />
+      </geometry>
+      <material name="rubber_black" />
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <sphere radius="0.008" />
+      </geometry>
+    </collision>
+  </link>
+
+  <!-- ==================== LEG 3 (FRONT_LEFT) ==================== -->
+  <!-- Coxa Joint -->
+  <joint name="coxa_joint_leg3" type="revolute">
+    <origin xyz="0.070287 0.051653 0.018880" rpy="0 0 0.9599" />
+    <parent link="base_link" />
+    <child link="coxa_leg3" />
+    <axis xyz="0 0 1" />
+    <limit lower="-2.61" upper="2.61" effort="1.8" velocity="8.0" />
+    <dynamics damping="0.1" friction="0.05" />
+  </joint>
+
+  <!-- Coxa Link -->
+  <link name="coxa_leg3">
+    <inertial>
+      <origin xyz="0.020300 -0.000057 0.000043" rpy="0 0 0" />
+      <mass value="0.015986" />
+      <inertia
+        ixx="6.1573e-06" ixy="-9.8142e-10" ixz="9.8142e-10"
+        iyy="4.2615e-06" iyz="2.4852e-17" izz="4.2615e-06" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://hexapod_isaacsim/meshes/coxa.STL" />
+      </geometry>
+      <material name="light_grey" />
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://hexapod_isaacsim/meshes/coxa.STL" />
+      </geometry>
+    </collision>
+  </link>
+
+  <!-- Femur Joint -->
+  <joint name="femur_joint_leg3" type="revolute">
+    <origin xyz="0.040600 0 0" rpy="0 0 0" />
+    <parent link="coxa_leg3" />
+    <child link="femur_leg3" />
+    <axis xyz="0 1 0" />
+    <limit lower="-2.61" upper="2.61" effort="1.8" velocity="8.0" />
+    <dynamics damping="0.1" friction="0.05" />
+  </joint>
+
+  <!-- Femur Link -->
+  <link name="femur_leg3">
+    <inertial>
+      <origin xyz="0.041637 -0.000831 0.000000" rpy="0 0 0" />
+      <mass value="0.092287" />
+      <inertia
+        ixx="1.3978e-05" ixy="3.3089e-11" ixz="1.5036e-09"
+        iyy="2.0357e-05" iyz="-6.7035e-13" izz="2.4025e-05" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://hexapod_isaacsim/meshes/femur.STL" />
+      </geometry>
+      <material name="black" />
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://hexapod_isaacsim/meshes/femur.STL" />
+      </geometry>
+    </collision>
+  </link>
+
+  <!-- Tibia Joint -->
+  <joint name="tibia_joint_leg3" type="revolute">
+    <origin xyz="0.083000 0 0" rpy="0 0 0" />
+    <parent link="femur_leg3" />
+    <child link="tibia_leg3" />
+    <axis xyz="0 1 0" />
+    <limit lower="-2.61" upper="2.61" effort="1.8" velocity="8.0" />
+    <dynamics damping="0.1" friction="0.05" />
+  </joint>
+
+  <!-- Tibia Link -->
+  <link name="tibia_leg3">
+    <inertial>
+      <origin xyz="0.082775 0.000233 -0.000026" rpy="0 0 0" />
+      <mass value="0.043186" />
+      <inertia
+        ixx="5.0086e-06" ixy="6.6214e-08" ixz="-9.7801e-13"
+        iyy="3.7449e-05" iyz="-1.8078e-12" izz="3.6338e-05" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="1.5708 0 0" />
+      <geometry>
+        <mesh filename="package://hexapod_isaacsim/meshes/tibia.STL" />
+      </geometry>
+      <material name="red" />
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="1.5708 0 0" />
+      <geometry>
+        <mesh filename="package://hexapod_isaacsim/meshes/tibia.STL" />
+      </geometry>
+    </collision>
+  </link>
+
+  <!-- Foot / Toe Contact Link -->
+  <joint name="foot_joint_leg3" type="fixed">
+    <origin xyz="0.148500 0 0" rpy="0 0 0" />
+    <parent link="tibia_leg3" />
+    <child link="foot_leg3" />
+  </joint>
+
+  <link name="foot_leg3">
+    <inertial>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <mass value="0.001" />
+      <inertia ixx="1e-06" ixy="0" ixz="0" iyy="1e-06" iyz="0" izz="1e-06" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <sphere radius="0.008" />
+      </geometry>
+      <material name="rubber_black" />
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <sphere radius="0.008" />
+      </geometry>
+    </collision>
+  </link>
+
+  <!-- ==================== LEG 4 (FRONT_RIGHT) ==================== -->
+  <!-- Coxa Joint -->
+  <joint name="coxa_joint_leg4" type="revolute">
+    <origin xyz="0.070287 -0.051653 0.018880" rpy="0 0 -0.9599" />
+    <parent link="base_link" />
+    <child link="coxa_leg4" />
+    <axis xyz="0 0 1" />
+    <limit lower="-2.61" upper="2.61" effort="1.8" velocity="8.0" />
+    <dynamics damping="0.1" friction="0.05" />
+  </joint>
+
+  <!-- Coxa Link -->
+  <link name="coxa_leg4">
+    <inertial>
+      <origin xyz="0.020300 -0.000057 0.000043" rpy="0 0 0" />
+      <mass value="0.015986" />
+      <inertia
+        ixx="6.1573e-06" ixy="-9.8142e-10" ixz="9.8142e-10"
+        iyy="4.2615e-06" iyz="2.4852e-17" izz="4.2615e-06" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://hexapod_isaacsim/meshes/coxa.STL" />
+      </geometry>
+      <material name="light_grey" />
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://hexapod_isaacsim/meshes/coxa.STL" />
+      </geometry>
+    </collision>
+  </link>
+
+  <!-- Femur Joint -->
+  <joint name="femur_joint_leg4" type="revolute">
+    <origin xyz="0.040600 0 0" rpy="0 0 0" />
+    <parent link="coxa_leg4" />
+    <child link="femur_leg4" />
+    <axis xyz="0 1 0" />
+    <limit lower="-2.61" upper="2.61" effort="1.8" velocity="8.0" />
+    <dynamics damping="0.1" friction="0.05" />
+  </joint>
+
+  <!-- Femur Link -->
+  <link name="femur_leg4">
+    <inertial>
+      <origin xyz="0.041637 -0.000831 0.000000" rpy="0 0 0" />
+      <mass value="0.092287" />
+      <inertia
+        ixx="1.3978e-05" ixy="3.3089e-11" ixz="1.5036e-09"
+        iyy="2.0357e-05" iyz="-6.7035e-13" izz="2.4025e-05" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://hexapod_isaacsim/meshes/femur.STL" />
+      </geometry>
+      <material name="black" />
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://hexapod_isaacsim/meshes/femur.STL" />
+      </geometry>
+    </collision>
+  </link>
+
+  <!-- Tibia Joint -->
+  <joint name="tibia_joint_leg4" type="revolute">
+    <origin xyz="0.083000 0 0" rpy="0 0 0" />
+    <parent link="femur_leg4" />
+    <child link="tibia_leg4" />
+    <axis xyz="0 1 0" />
+    <limit lower="-2.61" upper="2.61" effort="1.8" velocity="8.0" />
+    <dynamics damping="0.1" friction="0.05" />
+  </joint>
+
+  <!-- Tibia Link -->
+  <link name="tibia_leg4">
+    <inertial>
+      <origin xyz="0.082775 0.000233 -0.000026" rpy="0 0 0" />
+      <mass value="0.043186" />
+      <inertia
+        ixx="5.0086e-06" ixy="6.6214e-08" ixz="-9.7801e-13"
+        iyy="3.7449e-05" iyz="-1.8078e-12" izz="3.6338e-05" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="1.5708 0 0" />
+      <geometry>
+        <mesh filename="package://hexapod_isaacsim/meshes/tibia.STL" />
+      </geometry>
+      <material name="red" />
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="1.5708 0 0" />
+      <geometry>
+        <mesh filename="package://hexapod_isaacsim/meshes/tibia.STL" />
+      </geometry>
+    </collision>
+  </link>
+
+  <!-- Foot / Toe Contact Link -->
+  <joint name="foot_joint_leg4" type="fixed">
+    <origin xyz="0.148500 0 0" rpy="0 0 0" />
+    <parent link="tibia_leg4" />
+    <child link="foot_leg4" />
+  </joint>
+
+  <link name="foot_leg4">
+    <inertial>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <mass value="0.001" />
+      <inertia ixx="1e-06" ixy="0" ixz="0" iyy="1e-06" iyz="0" izz="1e-06" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <sphere radius="0.008" />
+      </geometry>
+      <material name="rubber_black" />
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <sphere radius="0.008" />
+      </geometry>
+    </collision>
+  </link>
+
+  <!-- ==================== LEG 5 (MIDDLE_RIGHT) ==================== -->
+  <!-- Coxa Joint -->
+  <joint name="coxa_joint_leg5" type="revolute">
+    <origin xyz="0.000000 -0.070500 0.018880" rpy="0 0 -1.5708" />
+    <parent link="base_link" />
+    <child link="coxa_leg5" />
+    <axis xyz="0 0 1" />
+    <limit lower="-2.61" upper="2.61" effort="1.8" velocity="8.0" />
+    <dynamics damping="0.1" friction="0.05" />
+  </joint>
+
+  <!-- Coxa Link -->
+  <link name="coxa_leg5">
+    <inertial>
+      <origin xyz="0.020300 -0.000057 0.000043" rpy="0 0 0" />
+      <mass value="0.015986" />
+      <inertia
+        ixx="6.1573e-06" ixy="-9.8142e-10" ixz="9.8142e-10"
+        iyy="4.2615e-06" iyz="2.4852e-17" izz="4.2615e-06" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://hexapod_isaacsim/meshes/coxa.STL" />
+      </geometry>
+      <material name="light_grey" />
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://hexapod_isaacsim/meshes/coxa.STL" />
+      </geometry>
+    </collision>
+  </link>
+
+  <!-- Femur Joint -->
+  <joint name="femur_joint_leg5" type="revolute">
+    <origin xyz="0.040600 0 0" rpy="0 0 0" />
+    <parent link="coxa_leg5" />
+    <child link="femur_leg5" />
+    <axis xyz="0 1 0" />
+    <limit lower="-2.61" upper="2.61" effort="1.8" velocity="8.0" />
+    <dynamics damping="0.1" friction="0.05" />
+  </joint>
+
+  <!-- Femur Link -->
+  <link name="femur_leg5">
+    <inertial>
+      <origin xyz="0.041637 -0.000831 0.000000" rpy="0 0 0" />
+      <mass value="0.092287" />
+      <inertia
+        ixx="1.3978e-05" ixy="3.3089e-11" ixz="1.5036e-09"
+        iyy="2.0357e-05" iyz="-6.7035e-13" izz="2.4025e-05" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://hexapod_isaacsim/meshes/femur.STL" />
+      </geometry>
+      <material name="black" />
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://hexapod_isaacsim/meshes/femur.STL" />
+      </geometry>
+    </collision>
+  </link>
+
+  <!-- Tibia Joint -->
+  <joint name="tibia_joint_leg5" type="revolute">
+    <origin xyz="0.083000 0 0" rpy="0 0 0" />
+    <parent link="femur_leg5" />
+    <child link="tibia_leg5" />
+    <axis xyz="0 1 0" />
+    <limit lower="-2.61" upper="2.61" effort="1.8" velocity="8.0" />
+    <dynamics damping="0.1" friction="0.05" />
+  </joint>
+
+  <!-- Tibia Link -->
+  <link name="tibia_leg5">
+    <inertial>
+      <origin xyz="0.082775 0.000233 -0.000026" rpy="0 0 0" />
+      <mass value="0.043186" />
+      <inertia
+        ixx="5.0086e-06" ixy="6.6214e-08" ixz="-9.7801e-13"
+        iyy="3.7449e-05" iyz="-1.8078e-12" izz="3.6338e-05" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="1.5708 0 0" />
+      <geometry>
+        <mesh filename="package://hexapod_isaacsim/meshes/tibia.STL" />
+      </geometry>
+      <material name="red" />
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="1.5708 0 0" />
+      <geometry>
+        <mesh filename="package://hexapod_isaacsim/meshes/tibia.STL" />
+      </geometry>
+    </collision>
+  </link>
+
+  <!-- Foot / Toe Contact Link -->
+  <joint name="foot_joint_leg5" type="fixed">
+    <origin xyz="0.148500 0 0" rpy="0 0 0" />
+    <parent link="tibia_leg5" />
+    <child link="foot_leg5" />
+  </joint>
+
+  <link name="foot_leg5">
+    <inertial>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <mass value="0.001" />
+      <inertia ixx="1e-06" ixy="0" ixz="0" iyy="1e-06" iyz="0" izz="1e-06" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <sphere radius="0.008" />
+      </geometry>
+      <material name="rubber_black" />
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <sphere radius="0.008" />
+      </geometry>
+    </collision>
+  </link>
+
+  <!-- ==================== LEG 6 (REAR_RIGHT) ==================== -->
+  <!-- Coxa Joint -->
+  <joint name="coxa_joint_leg6" type="revolute">
+    <origin xyz="-0.070287 -0.051653 0.018880" rpy="0 0 -2.1817" />
+    <parent link="base_link" />
+    <child link="coxa_leg6" />
+    <axis xyz="0 0 1" />
+    <limit lower="-2.61" upper="2.61" effort="1.8" velocity="8.0" />
+    <dynamics damping="0.1" friction="0.05" />
+  </joint>
+
+  <!-- Coxa Link -->
+  <link name="coxa_leg6">
+    <inertial>
+      <origin xyz="0.020300 -0.000057 0.000043" rpy="0 0 0" />
+      <mass value="0.015986" />
+      <inertia
+        ixx="6.1573e-06" ixy="-9.8142e-10" ixz="9.8142e-10"
+        iyy="4.2615e-06" iyz="2.4852e-17" izz="4.2615e-06" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://hexapod_isaacsim/meshes/coxa.STL" />
+      </geometry>
+      <material name="light_grey" />
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://hexapod_isaacsim/meshes/coxa.STL" />
+      </geometry>
+    </collision>
+  </link>
+
+  <!-- Femur Joint -->
+  <joint name="femur_joint_leg6" type="revolute">
+    <origin xyz="0.040600 0 0" rpy="0 0 0" />
+    <parent link="coxa_leg6" />
+    <child link="femur_leg6" />
+    <axis xyz="0 1 0" />
+    <limit lower="-2.61" upper="2.61" effort="1.8" velocity="8.0" />
+    <dynamics damping="0.1" friction="0.05" />
+  </joint>
+
+  <!-- Femur Link -->
+  <link name="femur_leg6">
+    <inertial>
+      <origin xyz="0.041637 -0.000831 0.000000" rpy="0 0 0" />
+      <mass value="0.092287" />
+      <inertia
+        ixx="1.3978e-05" ixy="3.3089e-11" ixz="1.5036e-09"
+        iyy="2.0357e-05" iyz="-6.7035e-13" izz="2.4025e-05" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://hexapod_isaacsim/meshes/femur.STL" />
+      </geometry>
+      <material name="black" />
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://hexapod_isaacsim/meshes/femur.STL" />
+      </geometry>
+    </collision>
+  </link>
+
+  <!-- Tibia Joint -->
+  <joint name="tibia_joint_leg6" type="revolute">
+    <origin xyz="0.083000 0 0" rpy="0 0 0" />
+    <parent link="femur_leg6" />
+    <child link="tibia_leg6" />
+    <axis xyz="0 1 0" />
+    <limit lower="-2.61" upper="2.61" effort="1.8" velocity="8.0" />
+    <dynamics damping="0.1" friction="0.05" />
+  </joint>
+
+  <!-- Tibia Link -->
+  <link name="tibia_leg6">
+    <inertial>
+      <origin xyz="0.082775 0.000233 -0.000026" rpy="0 0 0" />
+      <mass value="0.043186" />
+      <inertia
+        ixx="5.0086e-06" ixy="6.6214e-08" ixz="-9.7801e-13"
+        iyy="3.7449e-05" iyz="-1.8078e-12" izz="3.6338e-05" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="1.5708 0 0" />
+      <geometry>
+        <mesh filename="package://hexapod_isaacsim/meshes/tibia.STL" />
+      </geometry>
+      <material name="red" />
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="1.5708 0 0" />
+      <geometry>
+        <mesh filename="package://hexapod_isaacsim/meshes/tibia.STL" />
+      </geometry>
+    </collision>
+  </link>
+
+  <!-- Foot / Toe Contact Link -->
+  <joint name="foot_joint_leg6" type="fixed">
+    <origin xyz="0.148500 0 0" rpy="0 0 0" />
+    <parent link="tibia_leg6" />
+    <child link="foot_leg6" />
+  </joint>
+
+  <link name="foot_leg6">
+    <inertial>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <mass value="0.001" />
+      <inertia ixx="1e-06" ixy="0" ixz="0" iyy="1e-06" iyz="0" izz="1e-06" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <sphere radius="0.008" />
+      </geometry>
+      <material name="rubber_black" />
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <sphere radius="0.008" />
+      </geometry>
+    </collision>
+  </link>
+</robot>

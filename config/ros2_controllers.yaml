@@ -1,0 +1,65 @@
+controller_manager:
+  ros__parameters:
+    update_rate: 100  # Hz
+
+    joint_state_broadcaster:
+      type: joint_state_broadcaster/JointStateBroadcaster
+
+    joint_trajectory_controller:
+      type: joint_trajectory_controller/JointTrajectoryController
+
+    forward_position_controller:
+      type: position_controllers/JointGroupPositionController
+
+joint_trajectory_controller:
+  ros__parameters:
+    joints:
+      - coxa_joint_leg1
+      - femur_joint_leg1
+      - tibia_joint_leg1
+      - coxa_joint_leg2
+      - femur_joint_leg2
+      - tibia_joint_leg2
+      - coxa_joint_leg3
+      - femur_joint_leg3
+      - tibia_joint_leg3
+      - coxa_joint_leg4
+      - femur_joint_leg4
+      - tibia_joint_leg4
+      - coxa_joint_leg5
+      - femur_joint_leg5
+      - tibia_joint_leg5
+      - coxa_joint_leg6
+      - femur_joint_leg6
+      - tibia_joint_leg6
+    command_interfaces:
+      - position
+    state_interfaces:
+      - position
+      - velocity
+    state_publish_rate: 50.0
+    action_monitor_rate: 20.0
+    allow_partial_joints_goal: false
+
+forward_position_controller:
+  ros__parameters:
+    joints:
+      - coxa_joint_leg1
+      - femur_joint_leg1
+      - tibia_joint_leg1
+      - coxa_joint_leg2
+      - femur_joint_leg2
+      - tibia_joint_leg2
+      - coxa_joint_leg3
+      - femur_joint_leg3
+      - tibia_joint_leg3
+      - coxa_joint_leg4
+      - femur_joint_leg4
+      - tibia_joint_leg4
+      - coxa_joint_leg5
+      - femur_joint_leg5
+      - tibia_joint_leg5
+      - coxa_joint_leg6
+      - femur_joint_leg6
+      - tibia_joint_leg6
+    interface_name: position
